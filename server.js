@@ -8,12 +8,7 @@ const server = express()
 .listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 
-const io = require("socket.io")(server, {
-	cors: {
-		origin: "https://avivid-client.herokuapp.com/",
-		methods: [ "GET", "POST" ]
-	}
-})
+const io = require("socket.io")(server)
 
 io.on("connection", (socket) => {
 	socket.emit("me", socket.id)
