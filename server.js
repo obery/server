@@ -1,7 +1,6 @@
 const express = require("express")
 const INDEX = '/index.html';
-// const http = require("http")
-// const app = express()
+
 const PORT = process.env.PORT || 5000;
 const server = express()
 .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
@@ -10,8 +9,9 @@ const server = express()
 
 const io = require("socket.io")(server, {
 	cors: {
-		origin: "https://avivid-client.herokuapp.com/",
-		methods: [ "GET", "POST" ]
+		origin: "https://avivid-client.herokuapp.com",
+		methods: [ "GET", "POST" ],
+        credentials: true
 	}
 })
 
